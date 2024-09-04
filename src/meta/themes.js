@@ -118,8 +118,10 @@ Themes.set = async (data) => {
 				await Meta.configs.setMultiple({
 					'theme:type': data.type,
 					'theme:id': data.id,
-					'theme:staticDir': config.staticDir || '',
-					'theme:templates': config.templates || '',
+					// 'theme:staticDir': config.staticDir ? config.staticDir : '', 
+					// 'theme:templates': config.templates ? config.templates : '',
+					'theme:staticDir': config.staticDir || '', //changed line 121 by reducing unnecessary conditionals that can be done with an or operator
+					'theme:templates': config.templates || '', //changed line 122 by reducing unnecessary conditionals that can be done with an or operator
 					'theme:src': '',
 					bootswatchSkin: '',
 				});
