@@ -122,10 +122,10 @@ Themes.set = async (data) => {
 				await Meta.configs.setMultiple({
 					'theme:type': data.type,
 					'theme:id': data.id,
-					'theme:staticDir': themeMetaCond(config.staticDir),
-					'theme:temmplates': themeMetaCond(config.templates),
-					// 'theme:staticDir': config.staticDir ? config.staticDir : '',
-					// 'theme:templates': config.templates ? config.templates : '',
+					// 'theme:staticDir': themeMetaCond(config.staticDir),
+					// 'theme:temmplates': themeMetaCond(config.templates),
+					'theme:staticDir': config.staticDir ? config.staticDir : '',
+					'theme:templates': config.templates ? config.templates : '',
 					'theme:src': '',
 					bootswatchSkin: '',
 				});
