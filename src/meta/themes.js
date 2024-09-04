@@ -116,11 +116,7 @@ Themes.set = async (data) => {
 				Themes.setPath(config);
 
 				function themeMetaCond(conf) {
-					if (conf){
-						return conf;
-					} else {
-						return '';
-					}
+					return conf ? conf : '';
 				}
 
 				await Meta.configs.setMultiple({
