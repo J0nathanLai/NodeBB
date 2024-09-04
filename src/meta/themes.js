@@ -86,12 +86,8 @@ async function getThemes(themePath) {
 }
 
 function throwErr(data, cond, message1, win, message2) {
-	if (win) {
-		winston.error(message2);
-	}
-	if (!cond) {
-		throw new Error(message1);
-	}
+	win ? winston.error(message2);
+	!cond ? throw new Error(message1);
 }
 
 Themes.set = async (data) => {
