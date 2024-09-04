@@ -115,9 +115,8 @@ Themes.set = async (data) => {
 					await db.sortedSetRemove('plugins:active', current);
 					await db.sortedSetAdd('plugins:active', score || 0, data.id);
 				} else {
-					var winText = `When defining active plugins in configuration, changing themes requires adding the theme '${data.id}' to the list of active plugins before updating it in the ACP`;
+					const winText = `When defining active plugins in configuration, changing themes requires adding the theme '${data.id}' to the list of active plugins before updating it in the ACP`;
 					throwErr(activePluginsConfig.includes(data.id), '[[error:theme-not-set-in-configuration]]', true, winText);
-						 
 				}
 
 				// Re-set the themes path (for when NodeBB is reloaded)
