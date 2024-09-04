@@ -105,9 +105,7 @@ Themes.set = async (data) => {
 			if (current !== data.id) {
 				const pathToThemeJson = path.join(nconf.get('themes_path'), data.id, 'theme.json');
 				throwErr(data, pathToThemeJson.startsWith(nconf.get('themes_path')), '[[error:invalid-theme-id]]', false, '');
-				// if (!pathToThemeJson.startsWith(nconf.get('themes_path'))) {
-				// throw new Error('[[error:invalid-theme-id]]');
-				// }
+
 
 				let config = await fs.promises.readFile(pathToThemeJson, 'utf8');
 				config = JSON.parse(config);
@@ -117,14 +115,10 @@ Themes.set = async (data) => {
 					await db.sortedSetRemove('plugins:active', current);
 					await db.sortedSetAdd('plugins:active', score || 0, data.id);
 				} else {
-					throwErr(activePluginsConfig.includes(data.id), '[[error:theme-not-set-in-configuration]]', true, 
-						 `When defining active plugins in configuration, changing themes requires adding the theme '${data.id}' to the list of active plugins before updating it in the ACP`);
+					var winText = `When defining active plugins in configuration, changing themes requires adding the theme '${data.id}' to the list of active plugins before updating it in the ACP`;
+					throwErr(activePluginsConfig.includes(data.id), '[[error:theme-not-set-in-configuration]]', true, winText);
+						 
 				}
-				// if (!activePluginsConfig.includes(data.id)) {
-				// // This prevents changing theme when configuration doesn't include it, but allows it otherwise
-				// winston.error(`When defining active plugins in configuration, changing themes requires adding the theme '${data.id}' to the list of active plugins before updating it in the ACP`);
-				// throw new Error('[[error:theme-not-set-in-configuration]]');
-				// }
 
 				// Re-set the themes path (for when NodeBB is reloaded)
 				Themes.setPath(config);
