@@ -117,7 +117,8 @@ Themes.set = async (data) => {
 					await db.sortedSetRemove('plugins:active', current);
 					await db.sortedSetAdd('plugins:active', score || 0, data.id);
 				} else {
-					throwErr(activePluginsConfig.includes(data.id), '[[error:theme-not-set-in-configuration]]', true, `When defining active plugins in configuration, changing themes requires adding the theme '${data.id}' to the list of active plugins before updating it in the ACP`);
+					throwErr(activePluginsConfig.includes(data.id), '[[error:theme-not-set-in-configuration]]', true, 
+						 `When defining active plugins in configuration, changing themes requires adding the theme '${data.id}' to the list of active plugins before updating it in the ACP`);
 				}
 				// if (!activePluginsConfig.includes(data.id)) {
 				// // This prevents changing theme when configuration doesn't include it, but allows it otherwise
