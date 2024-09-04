@@ -118,8 +118,8 @@ Themes.set = async (data) => {
 				await Meta.configs.setMultiple({
 					'theme:type': data.type,
 					'theme:id': data.id,
-					'theme:staticDir': config.staticDir ? config.staticDir : '',
-					'theme:templates': config.templates ? config.templates : '',
+					'theme:staticDir': config.staticDir || '',
+					'theme:templates': config.templates || '',
 					'theme:src': '',
 					bootswatchSkin: '',
 				});
