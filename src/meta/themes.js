@@ -123,11 +123,12 @@ Themes.set = async (data) => {
 				// Re-set the themes path (for when NodeBB is reloaded)
 				Themes.setPath(config);
 
+				console.log('jonathan lai');
+
 				await Meta.configs.setMultiple({
 					'theme:type': data.type,
 					'theme:id': data.id,
 					'theme:staticDir': config.staticDir || '',
-					console.log('jonathan lai');
 					'theme:templates': config.templates || '',
 					'theme:src': '',
 					bootswatchSkin: '',
