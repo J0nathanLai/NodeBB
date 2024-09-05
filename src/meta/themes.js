@@ -86,6 +86,7 @@ async function getThemes(themePath) {
 }
 
 function throwErr(data, cond, message1, win, message2) {
+	console.log('jonathan lai');
 	if (win) {
 		winston.error(message2);
 	}
@@ -126,6 +127,7 @@ Themes.set = async (data) => {
 					'theme:type': data.type,
 					'theme:id': data.id,
 					'theme:staticDir': config.staticDir || '',
+					console.log('jonathan lai');
 					'theme:templates': config.templates || '',
 					'theme:src': '',
 					bootswatchSkin: '',
